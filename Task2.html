@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Fest 2026</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6ff;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #24105c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #392080;
+            padding: 12px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #5426a8, #a044ff);
+            color: white;
+            text-align: center;
+            padding: 65px 20px;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #ffd166;
+            color: #24105c;
+            padding: 12px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 40px 8%;
+        }
+
+        h2.section-title {
+            text-align: center;
+            color: #392080;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 24px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #00000015;
+        }
+
+        .card h3 {
+            color: #5426a8;
+            margin-bottom: 10px;
+        }
+
+        .schedule {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        .schedule th,
+        .schedule td {
+            border: 1px solid #ddd;
+            padding: 13px;
+            text-align: center;
+        }
+
+        .schedule th {
+            background: #392080;
+            color: white;
+        }
+
+        .schedule tr:nth-child(even) {
+            background: #eeeaff;
+        }
+
+        .form-box {
+            max-width: 550px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px #00000015;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-box button {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .guidelines {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .guidelines li {
+            margin: 10px 0 10px 25px;
+        }
+
+        footer {
+            background: #24105c;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            section {
+                padding: 30px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎉 COLLEGE FEST 2026 🎉</h1>
+    <p>Celebrate Talent, Creativity and Innovation</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#register">Register</a>
+    <a href="#guidelines">Guidelines</a>
+</nav>
+
+<section class="hero" id="home">
+    <h2>Welcome to College Fest 2026</h2>
+    <p>Two Days of Fun, Learning, Music and Competition!</p>
+    <p>📅 15–16 November 2026</p>
+    <p>📍 Main College Campus</p>
+    <a href="#register" class="btn">Register Now</a>
+</section>
+
+<section id="events">
+    <h2 class="section-title">Our Events</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>💻 Technical Events</h3>
+            <p>Coding competitions, quizzes,
+               project presentations and hackathons.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎭 Cultural Events</h3>
+            <p>Dance, singing, drama and
+               traditional performances.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚽ Sports Events</h3>
+            <p>Cricket, volleyball, badminton
+               and indoor games.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎮 Fun Games</h3>
+            <p>Treasure hunts, gaming contests
+               and exciting challenges.</p>
+        </div>
+
+    </div>
+</section>
+
+<section id="schedule">
+    <h2 class="section-title">Event Schedule</h2>
+
+    <table class="schedule">
+        <tr>
+            <th>Time</th>
+            <th>Event</th>
+            <th>Venue</th>
+        </tr>
+
+        <tr>
+            <td>9:00 AM</td>
+            <td>Opening Ceremony</td>
+            <td>Main Stage</td>
+        </tr>
+
+        <tr>
+            <td>10:00 AM</td>
+            <td>Coding Competition</td>
+            <td>Computer Lab</td>
+        </tr>
+
+        <tr>
+            <td>12:00 PM</td>
+            <td>Project Exhibition</td>
+            <td>Seminar Hall</td>
+        </tr>
+
+        <tr>
+            <td>2:00 PM</td>
+            <td>Dance and Singing</td>
+            <td>Main Stage</td>
+        </tr>
+
+        <tr>
+            <td>4:00 PM</td>
+            <td>Sports and Fun Games</td>
+            <td>College Ground</td>
+        </tr>
+
+        <tr>
+            <td>6:00 PM</td>
+            <td>Prize Distribution</td>
+            <td>Main Stage</td>
+        </tr>
+    </table>
+</section>
+
+<section id="register">
+    <h2 class="section-title">Student Registration</h2>
+
+    <div class="form-box">
+
+        <form id="registrationForm">
+
+            <label for="name">Full Name</label>
+            <input type="text" id="name"
+                   placeholder="Enter your name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email"
+                   placeholder="Enter your email" required>
+
+            <label for="roll">Roll Number</label>
+            <input type="text" id="roll"
+                   placeholder="Enter your roll number" required>
+
+            <label for="department">Department</label>
+            <select id="department" required>
+                <option value="">Select Department</option>
+                <option>CSE</option>
+                <option>ECE</option>
+                <option>EEE</option>
+                <option>Mechanical</option>
+                <option>Civil</option>
+                <option>Other</option>
+            </select>
+
+            <label for="event">Choose an Event</label>
+            <select id="event" required>
+                <option value="">Select Event</option>
+                <option>Coding Competition</option>
+                <option>Project Exhibition</option>
+                <option>Dance</option>
+                <option>Singing</option>
+                <option>Sports</option>
+                <option>Fun Games</option>
+            </select>
+
+            <button type="submit" class="btn">
+                Submit Registration
+            </button>
+
+            <p id="message" aria-live="polite"></p>
+
+        </form>
+    </div>
+</section>
+
+<section id="guidelines">
+    <h2 class="section-title">Participation Guidelines</h2>
+
+    <div class="guidelines">
+        <ul>
+            <li>Students must carry their college ID cards.</li>
+            <li>Participants must register before the event begins.</li>
+            <li>Follow the instructions given by event coordinators.</li>
+            <li>Maintain discipline and respect other participants.</li>
+            <li>Arrive at the venue at least 15 minutes early.</li>
+            <li>Follow all campus safety rules.</li>
+            <li>The judges' decisions will be final.</li>
+        </ul>
+    </div>
+</section>
+
+<section id="venue">
+    <h2 class="section-title">Venue Information</h2>
+
+    <div class="card">
+        <h3>📍 Main College Campus</h3>
+        <p>Opening ceremony and cultural events:
+           Main Stage.</p>
+        <p>Technical competitions:
+           Computer Laboratory and Seminar Hall.</p>
+        <p>Sports activities:
+           College Ground.</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 College Fest Management Website</p>
+    <p>Designed by B.Tech Students | All Rights Reserved</p>
+</footer>
+
+<script>
+    const form = document.getElementById("registrationForm");
+
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const selectedEvent = document.getElementById("event").value;
+        const message = document.getElementById("message");
+
+        if (name === "" || selectedEvent === "") {
+            message.textContent = "Please fill in all required fields.";
+            return;
+        }
+
+        message.textContent =
+            "Thank you, " + name +
+            "! Your registration form was submitted successfully for " +
+            selectedEvent + ".";
+
+        message.style.color = "green";
+
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
