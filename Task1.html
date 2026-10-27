@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Academic Dashboard</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f1f5fb;
+  color: #243653;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 235px;
+  background: #172b49;
+  color: white;
+  padding: 25px 15px;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #80b7ff;
+}
+
+.sidebar a {
+  display: block;
+  color: #e4edfa;
+  padding: 14px 12px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: #2867c7;
+  color: white;
+}
+
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 25px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 27px;
+  color: #183a70;
+}
+
+.profile {
+  background: white;
+  padding: 22px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  box-shadow: 0 3px 12px #dce5f1;
+  margin-bottom: 22px;
+}
+
+.profile p {
+  margin-top: 10px;
+  color: #5c6c83;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 3px 12px #dce5f1;
+}
+
+.card h3 {
+  color: #63738b;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.card h2 {
+  color: #1763ca;
+  font-size: 27px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px #dce5f1;
+  margin-bottom: 20px;
+  min-width: 0;
+  scroll-margin-top: 20px;
+}
+
+.section h2 {
+  font-size: 19px;
+  margin-bottom: 18px;
+  color: #183a70;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 420px;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e7edf5;
+  font-size: 13px;
+}
+
+th {
+  background: #edf4ff;
+  color: #244c84;
+}
+
+.progress-row {
+  margin: 17px 0;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.progress {
+  height: 9px;
+  background: #e4ebf5;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #13b981;
+  border-radius: 20px;
+}
+
+.badge {
+  background: #dcfce7;
+  color: #15803d;
+  padding: 5px 9px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.announcement {
+  padding: 13px 0;
+  border-bottom: 1px solid #e7edf5;
+}
+
+.announcement h3 {
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #244c84;
+}
+
+.announcement p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.notice {
+  color: #1763ca;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  color: #748197;
+  font-size: 12px;
+  padding: 20px;
+}
+
+@media (max-width: 1050px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .layout {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .sidebar h2 {
+    margin-bottom: 12px;
+  }
+
+  .sidebar nav {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+  }
+
+  .sidebar a {
+    white-space: nowrap;
+    padding: 10px;
+  }
+
+  main {
+    padding: 15px;
+  }
+
+  header h1 {
+    font-size: 22px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card {
+    padding: 14px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2>🎓 Student Portal</h2>
+    <nav>
+      <a class="active" href="#dashboard">🏠 Dashboard</a>
+      <a href="#profile">👤 My Profile</a>
+      <a href="#results">📊 Semester Results</a>
+      <a href="#attendance">📅 Attendance</a>
+      <a href="#subjects">📚 Subjects</a>
+      <a href="#exams">📝 Exam Schedule</a>
+      <a href="#announcements">📢 Announcements</a>
+    </nav>
+  </aside>
+
+  <main id="dashboard">
+
+    <header>
+      <h1>Student Academic Dashboard</h1>
+      <span>Academic Year: 2026–2030</span>
+    </header>
+
+    <section class="profile" id="profile">
+      <div>
+        <h2>Student Details</h2>
+        <p><strong>Name:</strong> Y. Shanmukha Chowdary</p>
+        <p><strong>Roll Number:</strong> 26001568</p>
+        <p><strong>Department:</strong> Computer Science Engineering-Data Science</p>
+        <p><strong>Year:</strong> 1st Year</p>
+        <p><strong>Semester:</strong> 1st Semester</p>
+        <p><strong>Email:</strong> yshanmukhachowdary@gmail.com</p>
+      </div>
+      <div>
+        <h2>Keep Learning! 🎯</h2>
+        <p>Small steps every day lead to big results.</p>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Current CGPA</h3>
+        <h2>8.42</h2>
+        <p>Out of 10.0</p>
+      </div>
+
+      <div class="card">
+        <h3>Overall Attendance</h3>
+        <h2>92%</h2>
+        <p>Good attendance</p>
+      </div>
+
+      <div class="card">
+        <h3>Total Subjects</h3>
+        <h2>6</h2>
+        <p>This semester</p>
+      </div>
+
+      <div class="card">
+        <h3>Upcoming Exams</h3>
+        <h2>2</h2>
+        <p>Check schedule below</p>
+      </div>
+    </section>
+
+    <div class="content-grid">
+
+      <div>
+        <section class="section" id="results">
+          <h2>📊 Semester Results</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Subject</th>
+                  <th>Grade</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CSD3</td>
+                  <td>Computational Mathematics</td>
+                  <td>A</td>
+                  <td><span class="badge">Pass</span></td>
+                </tr>
+                <tr>
+                  <td>CSD3</td>
+                  <td>Critical Thinking And Logical Reasoning</td>
+                  <td>B+</td>
+                  <td><span class="badge">Pass</span></td>
+                </tr>
+                <tr>
+                  <td>CSD3</td>
+                  <td>Python Programming</td>
+                  <td>A+</td>
+                  <td><span class="badge">Pass</span></td>
+                </tr>
+                <tr>
+                  <td>CSD3</td>
+                  <td>Introduction To Generative AI</td>
+                  <td>A</td>
+                  <td><span class="badge">Pass</span></td>
+                </tr>
+                <tr>
+                  <td>CSD3</td>
+                  <td>Proffisional Communication</td>
+                  <td>A</td>
+                  <td><span class="badge">Pass</span></td>
+                </tr>
+                <tr>
+                  <td>CSD3</td>
+                  <td>Web Development</td>
+                  <td>A</td>
+                  <td><span class="badge">Pass</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="subjects">
+          <h2>📚 Subject Information</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Credits</th>
+                  <th>Faculty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Computational Mathematics</td><td>4</td><td>Dr.D.Srinivasulu</td></tr>
+                <tr><td>Critical Thinking and logical Reasoning</td><td>3</td><td>Mrs.Koteswaramma</td></tr>
+                <tr><td>Python Programming</td><td>3</td><td>R.T.V.N.Aswini</td></tr>
+                <tr><td>Introduction to Generative AI Tools</td><td>3</td><td>Ms.P.MOhananajali</td></tr>
+                <tr><td>Proffisional Communication</td><td>3</td><td>Ms.Jasmine</td></tr>
+                <tr><td>Web Development</td><td>2</td><td>Mrs.T.Revathi</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <div>
+        <section class="section" id="attendance">
+          <h2>📅 Attendance Overview</h2>
+          <h3>Overall Attendance: 92%</h3>
+
+          <div class="progress-row">
+            <div class="progress-label">
+              <span>Computational Mathematics</span><span>96%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:96%"></div>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-label">
+              <span>Critical Thinking And Logical Reasoning</span><span>90%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:90%"></div>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-label">
+              <span>Python Programming</span><span>94%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:94%"></div>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-label">
+              <span>Web Development</span><span>88%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:88%"></div>
+            </div>
+          </div><div class="progress-row">
+            <div class="progress-label">
+              <span>Proffisional Communication</span><span>93%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:93%"></div>
+             </div>
+          <div class="progress-row">
+            <div class="progress-label">
+              <span>Introduction To Generative AI</span><span>93%</span>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" style="width:93%"></div>
+            </div>
+          </div>
+        </section>
+
+        </section><div class="progress-row">
+           
+
+
+          
+          
+
+         <section class="section" id="exams">
+          <h2>📝 Examination Schedule</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr<div class="progress-row">
+                  <th>Date</th>
+                  <th>Subject</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>15 Oct 2026</td>
+                  <td>Proffisional Comunication</td>
+                  <td>9:45 to 11:15 AM</td>
+                </tr>
+                <tr>
+                  <td>15 Oct 2026</td>
+                  <td>Computational Mathematics</td>
+                  <td>2:45 to 4:15 PM</td>
+                </tr>
+                <tr>
+                  <td>16 Oct 2026</td>
+                  <td>Critical Thinking And Logical Reasoning</td>
+                  <td>9:45 to 11:15 AM</td>
+                </tr>
+                <tr>
+                  <td>16 Oct 2026</td>
+                  <td>Web Development</td>
+                  <td>2:45 to 4:15 AM</td>
+                </tr>
+                <tr>
+                  <td>17 Oct 2026</td>
+                  <td>Python Programming</td>
+                  <td>2:45 to 4:15 PM</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="section" id="announcements">
+          <h2>📢 Announcements</h2>
+
+          <div class="announcement">
+            <h3>Mid-1 Examination</h3>
+            <p>Check the examination schedule and prepare accordingly.</p>
+          </div>
+
+          <div class="announcement">
+            <h3>Assignment Submission</h3>
+            <p>Submit pending subject assignments before the deadline.</p>
+          </div>
+
+          <div class="announcement">
+            <h3>College Cultural Fest</h3>
+            <p>Registrations are open for cultural activities.</p>
+          </div>
+
+          <div class="announcement">
+            <h3>Library Notice</h3>
+            <p>Remember to return borrowed books on time.</p>
+          </div>
+        </section>
+      </div>
+
+    </div>
+
+    <footer>
+      Student Academic Dashboard | Educational Web Development Project
+    </footer>
+
+  </main>
+</div>
+
+<script>
+const links = document.querySelectorAll(".sidebar a");
+
+links.forEach(link => {
+  link.addEventListener("click", function () {
+    links.forEach(item => item.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+</script>
+
+</body>
+</html>
